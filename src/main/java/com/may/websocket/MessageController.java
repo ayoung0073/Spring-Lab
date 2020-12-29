@@ -14,24 +14,26 @@ import static org.springframework.messaging.simp.stomp.StompHeaders.SESSION;
 public class MessageController {
 
     @MessageMapping("on") // api 매핑
-    @SendTo("/chat/on")
+    @SendTo("/topic/on")
     public Message on(Message message) throws InterruptedException {
         Thread.sleep(100);
+        message.setSendDate(new Date());
         return message;
     }
 
-    @MessageMapping("chat") // api 매핑
-    @SendTo("/chat/message")
+    @MessageMapping("chat")
+    @SendTo("/topic/message")
     public Message chat(Message message) throws InterruptedException {
         Thread.sleep(100);
         message.setSendDate(new Date());
         return message;
     }
 
-    @MessageMapping("off") // api 매핑
-    @SendTo("/chat/off")
+    @MessageMapping("off")
+    @SendTo("/topic/off")
     public Message off(Message message) throws InterruptedException {
         Thread.sleep(100);
+        message.setSendDate(new Date());
         return message;
     }
 

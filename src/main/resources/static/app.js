@@ -32,15 +32,15 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         // 입장에 대한 구독
-        stompClient.subscribe('/chat/on', function(msg) {
+        stompClient.subscribe('/topic/on', function(msg) {
             showHello(JSON.parse(msg.body));
         });
         // 입장에 대한 메시지 전달
-        stompClient.subscribe('/chat/message', function(msg) {
+        stompClient.subscribe('/topic/message', function(msg) {
             showDetail(JSON.parse(msg.body));
         });
         // 퇴장에 대한 구독
-        stompClient.subscribe('/chat/off', function(msg) {
+        stompClient.subscribe('/topic/off', function(msg) {
             showBye(JSON.parse(msg.body));
         });
         sendHello();
@@ -59,20 +59,20 @@ function disconnect() {
 }
 
 function sendHello() {
-    stompClient.send("/on", {}, JSON.stringify({
+    stompClient.send("/app/on", {}, JSON.stringify({
         name	 : $('#name').val()
     }));
 }
 
 function sendDetail() {
-    stompClient.send("/chat", {}, JSON.stringify({
+    stompClient.send("/app/chat", {}, JSON.stringify({
         name	 : $('#name').val(),
         content : $('#btn-input').val()
     }));
 }
 
 function sendBye() {
-    stompClient.send("/off", {}, JSON.stringify({
+    stompClient.send("/app/off", {}, JSON.stringify({
         name	 : $('#name').val()
     }));
 }
@@ -132,7 +132,7 @@ function showHello(message) {
     html += '		</small>';
     html += '	</div>';
     html += '	<p>';
-    html += '	입장하였습니다';
+    html += 	message.name + '님이 입장하였습니다';
     html += '	</p>';
     html += '	</div>';
     html += '</li>';
@@ -154,7 +154,7 @@ function showBye(message) {
     html += '		</small>';
     html += '	</div>';
     html += '	<p>';
-    html += '	퇴장하였습니다';
+    html +=     message.name + '님이 퇴장하였습니다';
     html += '	</p>';
     html += '	</div>';
     html += '</li>';
