@@ -1,5 +1,18 @@
 var stompClient = null;
 
+function getFormatDate(date){
+    //Tue Dec 29 2020 22:11:10 GMT+0900 (대한민국 표준
+    console.log("=======" + date);
+    var year = date.getFullYear();              //yyyy
+    var month = (1 + date.getMonth());          //M
+    month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+    var day = date.getDate();                   //d
+    day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+    var time = date.toString().substring(16, 24);
+    return  year + '-' + month + '-' + day + ' ' + time;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+}
+
+
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -66,16 +79,17 @@ function sendBye() {
 
 function showDetail(message) {
     var html = "";
+    var date = new Date(message.sendDate);
     if(message.name == $('#name').val()){
         html += '<li class="left clearfix">';
         html += '	<span class="chat-img pull-right">'
-        html += '		<img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">';
+        html += '		<img src="image/profile.png" width="65" height="43" alt="" class="img-circle">';
         html += '	</span>';
         html += '	<div class="chat-body clearfix">';
         html += '		<div class="header">';
         html += '		<strong class="pull-right primary-font">' + message.name + '</strong>';
         html += '		<small class="text-muted">';
-        html += '			<i class="fa fa-clock-o fa-fw"></i>' + new Date(message.sendDate);
+        html += '			<i class="fa fa-clock-o fa-fw"></i>' + getFormatDate(date);
         html += '		</small>';
         html += '	</div>';
         html += '	<p>';
@@ -86,13 +100,13 @@ function showDetail(message) {
     } else {
         html += '<li class="left clearfix">';
         html += '	<span class="chat-img pull-left">'
-        html += '		<img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">';
+        html += '		<img src="image/profile.png" width="65" height="43" alt="" class="img-circle">';
         html += '	</span>';
         html += '	<div class="chat-body clearfix">';
         html += '		<div class="header">';
         html += '		<strong class="primary-font">' + message.name + '</strong>';
         html += '		<small class="pull-right text-muted">';
-        html += '			<i class="fa fa-clock-o fa-fw"></i>' + new Date(message.sendDate);
+        html += '			<i class="fa fa-clock-o fa-fw"></i>' + getFormatDate(new Date(message.sendDate));
         html += '		</small>';
         html += '	</div>';
         html += '	<p>';
@@ -114,11 +128,11 @@ function showHello(message) {
     html += '	<div class="header">';
     html += '		<strong class="primary-font">' + message.name + '</strong>';
     html += '		<small class="pull-right text-muted">';
-    html += '			<i class="fa fa-clock-o fa-fw"></i>' + new Date(message.sendDate);
+    html += '			<i class="fa fa-clock-o fa-fw"></i>' + getFormatDate(new Date(message.sendDate));
     html += '		</small>';
     html += '	</div>';
     html += '	<p>';
-    html += '	입장 하였습니다';
+    html += '	입장하였습니다';
     html += '	</p>';
     html += '	</div>';
     html += '</li>';
@@ -129,17 +143,18 @@ function showHello(message) {
 
 function showBye(message) {
     var html = "";
+    var date = message.sendDate
 
     html += '<li class="left clearfix">';
     html += '	<div class="chat-body clearfix">';
     html += '	<div class="header">';
     html += '		<strong class="primary-font">' + message.name + '</strong>';
     html += '		<small class="pull-right text-muted">';
-    html += '			<i class="fa fa-clock-o fa-fw"></i>' + new Date(message.sendDate);
+    html += '			<i class="fa fa-clock-o fa-fw"></i>' + getFormatDate(new Date(message.sendDate));
     html += '		</small>';
     html += '	</div>';
     html += '	<p>';
-    html += '	퇴장 하였습니다';
+    html += '	퇴장하였습니다';
     html += '	</p>';
     html += '	</div>';
     html += '</li>';

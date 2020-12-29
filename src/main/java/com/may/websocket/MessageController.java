@@ -24,7 +24,6 @@ public class MessageController {
     @SendTo("/chat/message")
     public Message chat(Message message) throws InterruptedException {
         Thread.sleep(100);
-        System.out.println(message.getContent());
         message.setSendDate(new Date());
         return message;
     }
