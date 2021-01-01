@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -37,6 +38,6 @@ public class Reply {
     //       add constraint FKqnspgy412rv4dfcmv69hsf4px
     //       foreign key (userId)
     //       references User (id)
-    @CreatedDate
+    @CreationTimestamp
     private LocalDateTime createdAt;
 }

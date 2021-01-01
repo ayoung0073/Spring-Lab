@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -48,6 +49,6 @@ public class Board {
     // board 는 필드 이름(private Board board)(Reply 클래스)
     // OneToMany는 기본패치 전략이 LAZY가 됨. 무조건 들고와야 하니, EAGER로 바꾸자
 
-    @CreatedDate
+    @CreationTimestamp
     private LocalDateTime createdAt;
 }

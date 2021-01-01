@@ -2,6 +2,8 @@ package com.may.blog.model;
 
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
+@DynamicInsert // insert 시 null 인 필드 제외시켜준다
 @Entity // User 클래스가 MySQL 에 테이블이 자동으로 생성이 됨
 public class User {
 
@@ -28,9 +31,11 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @ColumnDefault("'user'") // "' '"
-    private String role; // Enum 쓰는 게 좋음 // admin, user, manager
+    // @ColumnDefault("'user'") // "' '"
+    // DB는 RoleType 이라는 게 없으므로 String이란 것 선언해줘야 함
+    @Enumerated(EnumType.STRING)
+    private RoleType role; // Enum 쓰는 게 좋음 // ADMIN, USER
 
-    @CreatedDate
+    @CreationTimestamp
     private LocalDateTime createdAt;
 }
