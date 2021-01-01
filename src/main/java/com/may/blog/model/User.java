@@ -22,7 +22,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 프로젝트에 연결된 DB의 넘버링 전략 따라감
     private Long id; // sequence, AI
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 30, unique = true)
     private String username; // 아이디
 
     @Column(nullable = false, length = 100) // 해쉬(비밀번호 암호화 할거임)
