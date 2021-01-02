@@ -31,6 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // 해당 password가 뭘로 해시가 되어 회원가입 되어있는지 알아야
     // 같은 해시로 암호화해서 DB에 있는 해시랑 비교할 수 있음
 
+
+
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {

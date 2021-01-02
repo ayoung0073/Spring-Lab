@@ -1,5 +1,6 @@
 package com.may.blog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,6 +45,8 @@ public class Board {
 
     @OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
     // @JoinColumn(name="replyId") // FK 필요없음
+    @JsonIgnoreProperties({"board"}) // Reply 클래스의 board 무시 **, user 도 하면 user 속성도 나오지 않음
+    // direct일 때는 다 보여줌.
     private List<Reply> reply;
     // mappedBy : FK 아니다. DB에 컬럼 만드는 것 아니다. join 을 통해 값을 얻기 위해서.
     // board 는 필드 이름(private Board board)(Reply 클래스)

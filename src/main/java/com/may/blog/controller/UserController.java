@@ -1,6 +1,9 @@
 package com.may.blog.controller;
 
+import com.may.blog.config.auth.PrincipalDetail;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -19,5 +22,11 @@ public class UserController {
     @GetMapping("/auth/loginForm")
     public String loginForm(){
         return "/user/loginForm";
+    }
+
+    @GetMapping("/user/updateForm")
+    public String updateForm(Model model, @AuthenticationPrincipal PrincipalDetail principal){
+        model.addAttribute("principal", principal);
+        return "/user/updateForm";
     }
 }
