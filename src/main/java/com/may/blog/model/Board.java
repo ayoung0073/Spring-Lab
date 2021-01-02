@@ -51,4 +51,12 @@ public class Board {
 
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setUser(User user){
+        this.user = user;
+    }
 }

@@ -1,8 +1,11 @@
 package com.may.blog.service;
 
+import com.may.blog.model.RoleType;
 import com.may.blog.model.User;
 import com.may.blog.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +17,16 @@ public class UserService {
 
     @Transactional
     public int join(User user) throws Exception{
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        user.setRole(RoleType.USER);
+
+        String rawPassword = user.getPassword();
+        String encPassword = passwordEncoder.encode(rawPassword);
+        user.setPassword(encPassword);
+
         userRepository.save(user);
+
         return 1;
     }
 
