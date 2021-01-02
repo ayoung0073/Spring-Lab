@@ -12,6 +12,8 @@ import java.util.Optional;
 // @Repository // 생략 가능
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    Optional<User> findByUsername(String username);
+
     // JPA Naming 쿼리
     // SELECT * FROM user WHERE username = ? AND password = ?;
     // User findByUsernameAndPassword(String username, String password);
