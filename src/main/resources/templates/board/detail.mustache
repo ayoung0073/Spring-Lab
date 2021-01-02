@@ -1,0 +1,26 @@
+{{>layout/header}}
+<div class="container">
+    <button class="btn-secondary btn" onclick="history.back()">뒤로가기</button>
+    <button id="btn-update" class="btn-dark btn">수정</button>
+    <script> if(sessionStorage.getItem("me") === "{{board.user.username}}")
+        document.write(`<button id="btn-delete" class="btn-danger btn">삭제</button>`);
+    </script>
+
+    <br><br>
+        <div>
+            <i>No.<span id="id">{{board.id}}</span>
+            작성자. <span id="username">{{board.user.username}}</span></i>
+        </div>
+        <br>
+        <div>
+            <h4>{{board.title}}</h4>
+        </div>
+        <hr>
+        <div>
+            <div>{{{board.content}}}</div>
+        </div>
+        <hr>
+    <button id="btn-board-save" class="btn btn-dark">save</button>
+</div>
+<script src="/js/board.js"></script>
+{{>layout/footer}}

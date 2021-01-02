@@ -21,7 +21,6 @@ public class UserApiController {
 
     @PostMapping("/auth/joinProc")
     public ResponseDto<Integer> save(@RequestBody User user) throws Exception { // username, password, email
-        System.out.println("save 호출됨");
 
         userService.join(user);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); // 자바오브젝트를 JSON으로 변환해 리턴(Jackson)

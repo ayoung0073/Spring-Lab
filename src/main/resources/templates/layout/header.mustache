@@ -33,4 +33,14 @@
         </ul>
     </div>
 </nav>
+
+{{#me}}
+    <script>
+        let me = "{{me}}" ;
+        sessionStorage.setItem("me", me);
+    </script>
+{{/me}}
+
+<span class="form-control"><script>document.write(sessionStorage.getItem("me"))</script></span>
+
 <br>
