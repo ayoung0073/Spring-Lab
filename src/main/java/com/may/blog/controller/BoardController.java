@@ -38,8 +38,14 @@ public class BoardController {
    }
 
    @GetMapping("/board/{id}")
-    public String getBoardOne(@PathVariable Long id, @AuthenticationPrincipal PrincipalDetail principal, Model model){
+    public String getBoardOne(@PathVariable Long id, Model model){
         model.addAttribute("board",boardService.getBoardDetail(id));
         return "board/detail";
    }
+
+    @GetMapping("/board/{id}/updateForm")
+    public String updateBoard(@PathVariable Long id, Model model){
+        model.addAttribute("board",boardService.getBoardDetail(id));
+        return "board/updateForm";
+    }
 }

@@ -39,6 +39,17 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
 
+    @Transactional
+    public void updateBoard(Long id, Board requestBoard){
+        Board board= boardRepository.findById(id).orElseThrow(
+                () ->{return new IllegalArgumentException("글을 찾을 수 없습니다");
+                }); // 영속화 완료
+        System.out.println(requestBoard.getContent());
+        board.update(requestBoard.getTitle(), requestBoard.getContent());
+        // 해당 함수 종료 시(Service) 트랜잭션 종료됨. 이때 더티체킹돼서 자동 업뎃됨(db flush)
+
+    }
+
 //    @Transactional(readOnly = true)
 //    public boolean checkWriter(Long id, Long userId){
 //        if(boardRepository.findById(id).)

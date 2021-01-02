@@ -25,8 +25,14 @@ public class BoardApiController {
     }
 
     @DeleteMapping("/api/board/{id}")
-    public ResponseDto<Integer> delete(@PathVariable Long id, @AuthenticationPrincipal PrincipalDetail principalDetail){
+    public ResponseDto<Integer> delete(@PathVariable Long id){
         boardService.deleteBoard(id);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+
+    @PutMapping("/api/board/{id}")
+    public ResponseDto<Integer> update(@PathVariable Long id, @RequestBody Board board){
+        boardService.updateBoard(id, board);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 }

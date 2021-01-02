@@ -1,9 +1,12 @@
 {{>layout/header}}
 <div class="container">
     <button class="btn-secondary btn" onclick="history.back()">뒤로가기</button>
-    <button id="btn-update" class="btn-dark btn">수정</button>
-    <script> if(sessionStorage.getItem("me") === "{{board.user.username}}")
-        document.write(`<button id="btn-delete" class="btn-danger btn">삭제</button>`);
+    <script>
+        if(sessionStorage.getItem("me") === "{{board.user.username}}") {
+            let id = {{board.id}};
+            document.write(`<a href='/board/` + id + `/updateForm' class='btn btn-dark'>수정</a>`);
+            document.write(` <button id="btn-delete" class="btn-danger btn">삭제</button>`);
+        }
     </script>
 
     <br><br>
