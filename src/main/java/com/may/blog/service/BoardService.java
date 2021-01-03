@@ -1,8 +1,10 @@
 package com.may.blog.service;
 
 import com.may.blog.model.Board;
+import com.may.blog.model.Reply;
 import com.may.blog.model.User;
 import com.may.blog.repository.BoardRepository;
+import com.may.blog.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +18,7 @@ import java.util.List;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+    private final ReplyRepository replyRepository;
 
     @Transactional
     public void register(Board board, User user){
@@ -48,6 +51,22 @@ public class BoardService {
         board.update(requestBoard.getTitle(), requestBoard.getContent());
         // 해당 함수 종료 시(Service) 트랜잭션 종료됨. 이때 더티체킹돼서 자동 업뎃됨(db flush)
 
+    }
+
+    @Transactional
+    public void registerReply(Long boardId, Reply requestReply, User user){
+        Board board = boardRepository.findById(boardId).orElseThrow(
+                ()-> { return new IllegalArgumentException("댓글 쓰기 실패");
+                });
+        requestReply.setUser(user);
+        requestReply.setBoard(board);
+
+        replyRepository.save(requestReply);
+    }
+
+    @Transactional
+    public void deleteReply(Long replyId){
+        replyRepository.deleteById(replyId);
     }
 
 //    @Transactional(readOnly = true)
