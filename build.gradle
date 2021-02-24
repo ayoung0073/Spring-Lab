@@ -28,7 +28,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     // mokito 라이브러리
-    testCompile 'org.mockito:mockito-all:1.6'
+//    testCompile 'org.mockito:mockito-all:1.6'
 }
 
 test {
