@@ -21,7 +21,7 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/") // 컨트롤러에서 세션은 어떻게 ? => @AuthenticationPrincipal PrincipalDetail principal
-    public String index(Model model, @AuthenticationPrincipal PrincipalDetail principal ,@PageableDefault(size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+    public String index(Model model, @AuthenticationPrincipal PrincipalDetail principal ,@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
         // 최신 글부터
         model.addAttribute("boardList", boardService.getBoardList(pageable));
         if(principal != null) {
