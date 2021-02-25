@@ -23,13 +23,12 @@ import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.UUID;
 
 
-// 인증이 안된 사용자들이 출입할 수 있는 경로를 /auth/** 허용
+// 인증이 안된 사용자들이 출입할 수 있
+// 는 경로를 /auth/** 허용
 // 그냥 주소가 /이면 index. 허용
 // static 이하에 있는 /js/**. /css/**. /image/** 허용
 
@@ -61,7 +60,7 @@ public class UserController {
 
     @GetMapping("/auth/kakao/callback")
     public String kakaoCallback(String code) throws Exception { // Data를 리턴해주는 함수
-
+        System.out.println(code);
         // --> code를 받으면 인증 성공
 
         // https://kauth.kakao.com/oauth/token

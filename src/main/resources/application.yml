@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?characterEncoding=UTF-8&useTimezone=true&serverTimezone=Asia/Seoul
+    username: root
+    password: 33366666622
+
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update # create || update || none -> create 하면 실행할 때마다 테이블을 새로 만듬(나중엔 update로 변경해야 함)
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        # Entity 만들 때, 변수명 그대로
+        # 만약 SpringPhysicalNamingStrategy 를 쓰면 myEmail -> my_email 로 됨, 우리는 그대로 만들것임..
+      use-new-id-generator-mappings: false #
+#    show-sql: true
+    properties:
+      hibernate.format_sql: true
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+may:
+  key: root
