@@ -11,14 +11,11 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-//    @Select("SELECT * FROM user")
     List<UserDto> findAll();
 
-//    @Select("SELECT * FROM user where id = #{id}")
     UserDto findById(Long id);
 
     String nameCheck(String id);
 
-    //    @Insert("INSERT INTO user (name, age) values (#{name}, #{age})")
     void save(@Param("name") String name, @Param("age") int age);
 }

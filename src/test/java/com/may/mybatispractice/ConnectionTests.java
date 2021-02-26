@@ -18,7 +18,7 @@ public class ConnectionTests {
     private SqlSessionFactory sqlSessionFactory;
 
     @Test
-    public void 커넥션_테스트(){
+    public void connection_test(){
         try(Connection con = sqlSessionFactory.openSession().getConnection()){
             System.out.println("커넥션 성공");
         }catch(Exception e){

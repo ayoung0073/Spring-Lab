@@ -5,24 +5,15 @@
 
 <mapper namespace="com.may.mybatispractice.mapper.UserMapper">
     <select id="findById" resultType="UserDto">
-        SELECT *
-        FROM
-            user
-        WHERE
-            id=#{id}
+        SELECT * FROM user WHERE id = #{id}
     </select>
+
     <select id="findAll" resultType="UserDto">
-        SELECT *
-        FROM
-            user
+        SELECT * FROM user
     </select>
 
     <select id="nameCheck" resultType="String">
-        SELECT COUNT(name)
-        FROM
-            user
-        WHERE
-            name = #{name}
+        SELECT COUNT(name) FROM user WHERE name = #{name}
     </select>
 
     <insert id="save">

@@ -4,5 +4,7 @@ spring:
     url: jdbc:mysql://localhost:3306/mybatis?characterEncoding=UTF-8&useTimezone=true&serverTimezone=Asia/Seoul
     username: root
     password: 33366666622
+    schema: classpath:schema.sql
 mybatis:
   type-aliases-package: com.may.mybatispractice.dto
+
