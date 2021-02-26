@@ -1,7 +1,7 @@
 # springboot-blog
 
 ### ✏ 기능 연습
-CRUD, Spring-Security, Kakao(Social) Login, Mustache, Paging
+CRUD, Spring-Security, Kakao(Social) Login, Mustache, Ajax, Paging
 
 ### 🛠 사용 기술 & 개발 환경
 Spring Boot, Spring Data JPA, MySQL
