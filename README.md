@@ -1,4 +1,12 @@
 # springboot-blog
+
+### ✏ 기능 연습
+CRUD, Spring-Security, Kakao(Social) Login, Mustache, Paging
+
+### 🛠 사용 기술 & 개발 환경
+Spring Boot, Spring Data JPA, MySQL
+
+### 👀 View
 - 홈 화면<br><br>
 ![image](https://user-images.githubusercontent.com/69340410/109098882-7992d400-7765-11eb-996a-f64a4360478a.png)<br>
 - 상세보기 버튼 누를 시 로그인 창<br><br>
