@@ -5,7 +5,7 @@
 
 <mapper namespace="com.may.mybatispractice.mapper.UserMapper">
     <select id="findById" resultType="UserDto">
-        SELECT * FROM user WHERE id = #{id}
+        SELECT * FROM user WHERE userId = #{userId}
     </select>
 
     <select id="findAll" resultType="UserDto">
