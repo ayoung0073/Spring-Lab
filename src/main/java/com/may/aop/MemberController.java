@@ -21,16 +21,24 @@ public class MemberController {
         return new ResponseEntity<>("success", HttpStatus.OK);
     }
 
-    @GetMapping("/api/check")
+//    @GetMapping("/api/check") // AOP 적용 전
+//    public ResponseEntity<MemberDto> checkSession(HttpSession session) {
+//        ResponseEntity<MemberDto> response = null;
+//        String id = SessionUtil.getLoginMemberId(session);
+//        if (id == null) {
+//            response = new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        } else {
+//            MemberDto member = memberService.getInfo(id);
+//            response = new ResponseEntity<>(member, HttpStatus.OK);
+//        }
+//        return response;
+//    }
+
+    @GetMapping("/api/check") // AOP 적용 후
     public ResponseEntity<MemberDto> checkSession(HttpSession session) {
-        ResponseEntity<MemberDto> response = null;
         String id = SessionUtil.getLoginMemberId(session);
-        if (id == null) {
-            response = new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        } else {
-            MemberDto member = memberService.getInfo(id);
-            response = new ResponseEntity<>(member, HttpStatus.OK);
-        }
-        return response;
+        MemberDto member = memberService.getInfo(id);
+        return new ResponseEntity<>(member, HttpStatus.OK);
     }
+
 }

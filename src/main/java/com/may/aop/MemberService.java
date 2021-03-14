@@ -11,7 +11,7 @@ public class MemberService {
 
     public MemberDto getInfo(String id) {
         return memberRepository.findById(id).orElseGet(
-                () -> {throw new IllegalArgumentException("해당 유저가 존재하지 않습니다.");}
+                () -> { throw new IllegalArgumentException("해당 유저가 존재하지 않습니다."); }
         );
     }
 

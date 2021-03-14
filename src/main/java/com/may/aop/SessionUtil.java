@@ -1,7 +1,5 @@
 package com.may.aop;
 
-import org.springframework.stereotype.Service;
-
 import javax.servlet.http.HttpSession;
 
 public class SessionUtil {
