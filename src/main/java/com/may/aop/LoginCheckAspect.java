@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 @Component
 public class LoginCheckAspect {
 
-    @Pointcut("execution(* com.may..*Controller(..))")
+    @Pointcut("execution(* com.may..*Controller.check*(..))")
     public void loginCheckPointcut() {}
 
     @Before("loginCheckPointcut()")
