@@ -35,6 +35,7 @@ public class MemberController {
 //    }
 
     @GetMapping("/api/check") // AOP 적용 후
+    @LoginCheck
     public ResponseEntity<MemberDto> checkSession(HttpSession session) {
         String id = SessionUtil.getLoginMemberId(session);
         MemberDto member = memberService.getInfo(id);
