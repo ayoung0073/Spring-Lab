@@ -33,7 +33,7 @@ public class CoffeeComponent implements CoffeeUseCase {
                     log.info("supplyAsync");
                     return coffeeRepository.getPriceByName(name);
                 },
-                executor
+                executor // CommonPool이 아닌 스레드 풀 사용
         );
 
 //        CompletableFuture<Integer> future = new CompletableFuture<>();
