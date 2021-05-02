@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 @Slf4j
 @Component
@@ -29,16 +28,22 @@ public class CoffeeComponent implements CoffeeUseCase {
     public CompletableFuture<Integer> getPriceAsync(String name) {
         log.info("Async 방식으로 가격 조회 시작");
 
-        CompletableFuture<Integer> future = new CompletableFuture<>();
+//        return CompletableFuture.supplyAsync(() -> coffeeRepository.getPriceByName(name));
+        return CompletableFuture.supplyAsync(() -> { // 로그 찍어보기 위해 추가
+            log.info("supplyAsync");
+            return coffeeRepository.getPriceByName(name);
+        });
 
-        new Thread(() -> {
-            log.info("새로운 스레드로 작업 시작");
-            Integer price = coffeeRepository.getPriceByName(name);
-            future.complete(price); // 다른 스레드에 데이터를 전
-        }).start();
-
-        return future;
-        // CompletableFuture 반환
+//        CompletableFuture<Integer> future = new CompletableFuture<>();
+//
+//        new Thread(() -> {
+//            log.info("새로운 스레드로 작업 시작");
+//            Integer price = coffeeRepository.getPriceByName(name);
+//            future.complete(price); // 다른 스레드에 데이터를 전
+//        }).start();
+//
+//        return future;
+//        // CompletableFuture 반환
     }
 
     @Override

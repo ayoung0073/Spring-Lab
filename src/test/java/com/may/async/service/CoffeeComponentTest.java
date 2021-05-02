@@ -57,6 +57,14 @@ public class CoffeeComponentTest {
         19:16:40.960 [Thread-3] INFO com.may.async.service.CoffeeComponent - 새로운 스레드로 작업 시작
         19:16:41.965 [Test worker] INFO com.may.async.service.CoffeeComponentTest - 최종 가격 전달 받음
          */
+
+        /* supplyAsync
+        22:55:26.676 [Test worker] INFO com.may.async.service.CoffeeComponent - Async 방식으로 가격 조회 시작
+        22:55:26.680 [Test worker] INFO com.may.async.service.CoffeeComponentTest - 아직 최종 가격 전달 받진 않았지만, 다른 작업 수행 가능
+        22:55:26.681 [ForkJoinPool.commonPool-worker-3] INFO com.may.async.service.CoffeeComponent - supplyAsync
+        22:55:27.690 [Test worker] INFO com.may.async.service.CoffeeComponentTest - 최종 가격 전달 받음
+         */
+
     }
     
 }
