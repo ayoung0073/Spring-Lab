@@ -30,9 +30,11 @@ public class CoffeeComponent implements CoffeeUseCase {
 
 //        return CompletableFuture.supplyAsync(() -> coffeeRepository.getPriceByName(name));
         return CompletableFuture.supplyAsync(() -> { // 로그 찍어보기 위해 추가
-            log.info("supplyAsync");
-            return coffeeRepository.getPriceByName(name);
-        });
+                    log.info("supplyAsync");
+                    return coffeeRepository.getPriceByName(name);
+                },
+                executor
+        );
 
 //        CompletableFuture<Integer> future = new CompletableFuture<>();
 //
