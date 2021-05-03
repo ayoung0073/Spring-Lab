@@ -4,11 +4,10 @@ package com.may.async.service;
 import com.may.async.repository.CoffeeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 @Slf4j
 @Component
@@ -16,7 +15,8 @@ import java.util.concurrent.Executors;
 public class CoffeeComponent implements CoffeeUseCase {
 
     private final CoffeeRepository coffeeRepository;
-    Executor executor = Executors.newFixedThreadPool(10);
+    // Executor executor = Executors.newFixedThreadPool(10);
+    private final ThreadPoolTaskExecutor executor;
 
     @Override
     public int getPrice(String name) throws InterruptedException {

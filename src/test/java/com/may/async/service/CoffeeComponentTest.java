@@ -1,7 +1,7 @@
 package com.may.async.service;
 
+import com.may.async.config.TaskConfig;
 import com.may.async.repository.CoffeeRepository;
-import net.minidev.json.writer.CompessorMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,11 +20,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(
         classes = {
+                TaskConfig.class,
                 CoffeeComponent.class,
                 CoffeeRepository.class
         }
 )
 public class CoffeeComponentTest {
+
     @Autowired
     private CoffeeComponent coffeeComponent;
 
