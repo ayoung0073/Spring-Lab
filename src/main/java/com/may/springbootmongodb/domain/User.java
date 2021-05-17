@@ -1,24 +1,31 @@
 package com.may.springbootmongodb.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Column;
 import javax.persistence.Id;
 
 @Setter
-@NoArgsConstructor
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(collection = "user")
 public class User {
 
     @Id
-    @Column(name = "_id")
     private String id;
 
+    @Indexed(unique=true)
     private String name;
 
     private int age;
+
+    @Builder
+    public User(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+
+
 }
