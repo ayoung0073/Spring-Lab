@@ -23,15 +23,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PrincipalDetailService principalDetailService;
 
     @Bean // IoC
-    public PasswordEncoder encodePWD(){
+    public PasswordEncoder encodePWD() {
         return new BCryptPasswordEncoder();
     }
 
     // 시큐리티가 대신 로그인해주는데 password를 가로채기할 때
     // 해당 password가 뭘로 해시가 되어 회원가입 되어있는지 알아야
     // 같은 해시로 암호화해서 DB에 있는 해시랑 비교할 수 있음
-
-
 
 
     @Bean
@@ -52,17 +50,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .headers().frameOptions().disable()
 //                .and()
                 .authorizeRequests()
-                    .antMatchers( "/", "/auth/**", "/js/**", "/css/**", "/image/**")
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated()
+                .antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
                 .and()
-                    .formLogin()
-                    .loginPage("/auth/loginForm")
-                    .loginProcessingUrl("/auth/loginProc") // 스프링 시큐리티가 해당 주소로 요청 오는 로그인을 가로채서 대신 로그인해줌
-                    .defaultSuccessUrl("/")
-                    .failureUrl("/auth/joinForm");
-   }
+                .formLogin()
+                .loginPage("/auth/loginForm")
+                .loginProcessingUrl("/auth/loginProc") // 스프링 시큐리티가 해당 주소로 요청 오는 로그인을 가로채서 대신 로그인해줌
+                .defaultSuccessUrl("/")
+                .failureUrl("/auth/joinForm");
+    }
 
 
 }

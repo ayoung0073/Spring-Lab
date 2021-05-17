@@ -1,33 +1,33 @@
 let index = { // object이기 때문에 아무일도 일어나지 않음
-    init:function (){
+    init: function () {
         // jQuery 사용
-        $("#btn-board-save").on("click",() => { // function(){}, ()=>{} this를 바인딩하기 위해
+        $("#btn-board-save").on("click", () => { // function(){}, ()=>{} this를 바인딩하기 위해
             this.save();
         }); // event 바인딩 // 두번째 파라미터에 메서드 작성
-        $("#btn-delete").on("click",() => {
+        $("#btn-delete").on("click", () => {
             this.delete();
         });
-        $("#btn-update").on("click",() => {
+        $("#btn-update").on("click", () => {
             this.update();
         });
-        $("#btn-reply-save").on("click",() => {
+        $("#btn-reply-save").on("click", () => {
             this.replySave();
         });
     },
-    
-    save: function (){
+
+    save: function () {
         //alert("user 의 save 함수 호출");
-        let data ={
+        let data = {
             title: $("#title").val(),
             content: $("#content").val(),
         }
         $.ajax({
-            type:"POST",
-            url:"/api/board",
-            data:JSON.stringify(data),
-            contentType:"application/json; charset=utf-8",
+            type: "POST",
+            url: "/api/board",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
             dataType: "json"
-        }).done(function (result){
+        }).done(function (result) {
             console.log(result);
             alert("글쓰기가 완료되었습니다.");
             location.href = "/";
@@ -37,7 +37,7 @@ let index = { // object이기 때문에 아무일도 일어나지 않음
 
     },
 
-    delete: function (){
+    delete: function () {
 
         let id = $("#id").text(); // value 하다가 안됨
         console.log(($("#id").val())); // 안 나 옴
@@ -45,10 +45,10 @@ let index = { // object이기 때문에 아무일도 일어나지 않음
 
 
         $.ajax({
-            type:"DELETE",
-            url:"/api/board/" + id,
+            type: "DELETE",
+            url: "/api/board/" + id,
             dataType: "json"
-        }).done(function (result){
+        }).done(function (result) {
             console.log(result);
             alert("삭제가 완료되었습니다.");
             location.href = "/";
@@ -57,7 +57,7 @@ let index = { // object이기 때문에 아무일도 일어나지 않음
         });
     },
 
-    update: function (){
+    update: function () {
         //alert("user 의 save 함수 호출");
         let id = $("#id").val();
         let data = {
@@ -65,12 +65,12 @@ let index = { // object이기 때문에 아무일도 일어나지 않음
             content: $("#content").val(),
         }
         $.ajax({
-            type:"PUT",
-            url:"/api/board/" + id,
-            data:JSON.stringify(data),
-            contentType:"application/json; charset=utf-8",
+            type: "PUT",
+            url: "/api/board/" + id,
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
             dataType: "json"
-        }).done(function (result){
+        }).done(function (result) {
             console.log(result);
             alert("글수정이 완료되었습니다.");
             location.href = "/";
@@ -80,9 +80,9 @@ let index = { // object이기 때문에 아무일도 일어나지 않음
 
     },
 
-    replySave: function (){
+    replySave: function () {
         //alert("user 의 save 함수 호출");
-        let data ={
+        let data = {
             content: $("#reply-content").val(),
         };
         let boardId = $("#boardId").val();
@@ -90,12 +90,12 @@ let index = { // object이기 때문에 아무일도 일어나지 않음
         console.log(data);
 
         $.ajax({
-            type:"POST",
-            url:`/api/board/${boardId}/reply`,
-            data:JSON.stringify(data),
-            contentType:"application/json; charset=utf-8",
+            type: "POST",
+            url: `/api/board/${boardId}/reply`,
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
             dataType: "json"
-        }).done(function (result){
+        }).done(function (result) {
             console.log(result);
             alert("댓글작성이 완료되었습니다.");
             location.href = `/board/${boardId}`;
@@ -105,13 +105,13 @@ let index = { // object이기 때문에 아무일도 일어나지 않음
 
     },
 
-    replyDelete: function (boardId, replyId){
+    replyDelete: function (boardId, replyId) {
         //alert("user 의 save 함수 호출");
         $.ajax({
-            type:"DELETE",
-            url:`/api/board/${boardId}/reply/${replyId}`,
+            type: "DELETE",
+            url: `/api/board/${boardId}/reply/${replyId}`,
             dataType: "json"
-        }).done(function (result){
+        }).done(function (result) {
             console.log(result);
             alert("댓글 삭제가 완료되었습니다.");
             location.href = `/board/${boardId}`;

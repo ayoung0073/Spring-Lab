@@ -25,11 +25,11 @@ public class Reply {
     private String content;
 
     @ManyToOne // 하나의 게시글에 여러개 답변 -> ManyToOne
-    @JoinColumn(name="boardId")
+    @JoinColumn(name = "boardId")
     private Board board;
 
     @ManyToOne // 하나의 유저는 여러개의 답변할 수 있음 , 하나의 답변을 여러명이 쓸수는 없음
-    @JoinColumn(name="userId")
+    @JoinColumn(name = "userId")
     private User user;
 
     //     alter table Reply

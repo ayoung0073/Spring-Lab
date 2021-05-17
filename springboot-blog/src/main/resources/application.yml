@@ -14,7 +14,7 @@ spring:
         # Entity 만들 때, 변수명 그대로
         # 만약 SpringPhysicalNamingStrategy 를 쓰면 myEmail -> my_email 로 됨, 우리는 그대로 만들것임..
       use-new-id-generator-mappings: false #
-#    show-sql: true
+    #    show-sql: true
     properties:
       hibernate.format_sql: true
 

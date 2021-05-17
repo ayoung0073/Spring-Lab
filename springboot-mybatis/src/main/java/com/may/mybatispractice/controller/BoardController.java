@@ -33,7 +33,7 @@ public class BoardController {
 
     @PutMapping("/board/{boardId}")
     public ResponseEntity<?> updateById(@PathVariable Long boardId, @RequestBody BoardDto boardDto) {
-        if (boardService.update(boardId, boardDto) != 0){
+        if (boardService.update(boardId, boardDto) != 0) {
             throw new IllegalArgumentException("게시글 수정 실패");
         }
         return ResponseEntity.ok("게시글 수정 성공");

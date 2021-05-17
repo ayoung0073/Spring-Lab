@@ -37,7 +37,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleType role; // Enum 쓰는 게 좋음 // ADMIN, USER
 
-    private  String oauth; // kakao, google
+    private String oauth; // kakao, google
 
     @CreationTimestamp
     private LocalDateTime createdAt;

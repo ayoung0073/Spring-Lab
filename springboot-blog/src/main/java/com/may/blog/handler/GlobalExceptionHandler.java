@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class) //Exception하면 모든 예외상황
-    public ResponseDto<String> handleArgumentException(Exception e){
+    public ResponseDto<String> handleArgumentException(Exception e) {
         return new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());
     }
 }

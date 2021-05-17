@@ -68,7 +68,7 @@ public class DummyControllerTest {
         System.out.println("password: " + requestUser.getPassword());
         System.out.println("email: " + requestUser.getEmail());
 
-        User user = userRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 유저 존재 X"));
+        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 유저 존재 X"));
 
         user.setEmail(requestUser.getEmail());
         user.setPassword(requestUser.getPassword());
@@ -81,8 +81,8 @@ public class DummyControllerTest {
     }
 
     @DeleteMapping("/dummy/user/{id}")
-    public String delete(@PathVariable Long id){
-        if(userRepository.findById(id).isPresent()) {
+    public String delete(@PathVariable Long id) {
+        if (userRepository.findById(id).isPresent()) {
             userRepository.deleteById(id);
             return "삭제 되었습니다";
         }

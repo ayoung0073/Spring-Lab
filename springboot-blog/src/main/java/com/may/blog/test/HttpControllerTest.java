@@ -12,22 +12,22 @@ import javax.management.DescriptorKey;
 public class HttpControllerTest {
 
     @GetMapping("/http/get")
-    public String getTest(){
+    public String getTest() {
         return "get요청";
     }
 
     @PostMapping("/http/post") // text/plain
-    public String postTest(@RequestBody String text){
+    public String postTest(@RequestBody String text) {
         return "post 요청 => " + text;
     }
 
     @PutMapping("/http/put")
-    public String putTest(){
+    public String putTest() {
         return "put요청";
     }
 
     @DeleteMapping("/http/delete")
-    public String deleteTest(){
+    public String deleteTest() {
         return "delete요청";
     }
 

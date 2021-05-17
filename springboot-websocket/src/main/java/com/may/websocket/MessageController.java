@@ -38,7 +38,6 @@ public class MessageController {
     }
 
 
-
 //    @MessageMapping("chat") // api 매핑
 //    @SendTo("/topic/message")
 //    public String chat(String message, SimpMessageHeaderAccessor messageHeaderAccessor){

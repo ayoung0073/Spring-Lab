@@ -18,7 +18,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Transactional
-    public void saveUser(User user){
+    public void saveUser(User user) {
         findByName(user.getName()).ifPresent(m -> {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
@@ -26,7 +26,7 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public List<User> findAll(){
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 

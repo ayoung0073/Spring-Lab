@@ -25,7 +25,7 @@ public class UserServiceIntegrationTest {
                 .age(7)
                 .name("문마음")
                 .build();
-        
+
         userService.saveUser(user);
     }
 

@@ -16,18 +16,18 @@ public class UserService {
     private final UserMapper userMapper;
 
     @Transactional(readOnly = true)
-    public List<UserDto> findAll(){
+    public List<UserDto> findAll() {
         return userMapper.findAll();
     }
 
 
     @Transactional(readOnly = true)
-    public UserDto findById(Long id){
+    public UserDto findById(Long id) {
         return userMapper.findById(id);
     }
 
     @Transactional
-    public void save(UserDto userDto){
+    public void save(UserDto userDto) {
         if ((userMapper.nameCheck(userDto.getName())).equals("0"))
             userMapper.save(userDto.getName(), userDto.getAge());
         else

@@ -5,7 +5,9 @@ import java.util.concurrent.CompletableFuture;
 // 서비스의 비즈니스 로직을 포함하고 있는 UseCase Interface
 public interface CoffeeUseCase {
     int getPrice(String name) throws InterruptedException;                            // Sync
+
     CompletableFuture<Integer> getPriceAsync(String name) throws InterruptedException;           // Async
+
     CompletableFuture<Integer> getDiscountPriceAsync(Integer price); // Async
 }
 /*

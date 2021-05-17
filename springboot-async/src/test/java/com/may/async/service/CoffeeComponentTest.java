@@ -31,6 +31,7 @@ public class CoffeeComponentTest {
     private CoffeeComponent coffeeComponent;
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Test
     public void 가격조회_Sync_블록킹_호출_테스트() throws InterruptedException {
 

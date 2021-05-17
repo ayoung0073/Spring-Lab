@@ -1,35 +1,37 @@
 {{>layout/header}}
 
-    <div class="container">
+<div class="container">
 
     <!--  card  -->
-        {{#boardList}}
+    {{#boardList}}
         <div class="card m-2">
             <div class="card-body">
                 <h4 class="card-title">{{title}}</h4>
                 <a href="/board/{{id}}" class="btn btn-dark">상세 보기</a>
             </div>
         </div>
-        {{/boardList}}
-        <ul class="pagination justify-content-center">
+    {{/boardList}}
+    <ul class="pagination justify-content-center">
 
-            <script> let pageNum = {{boardList.number}}</script>
-            {{^boardList.first}}
-                <li class="page-item"><a class="page-link" onclick="location.href = `?page=`+(pageNum-1)">Previous</a></li>
-            {{/boardList.first}}
-            {{#boardList.first}}
-                <li class="page-item disabled"><a class="page-link" onclick="location.href = `?page=`+(pageNum-1)">Previous</a></li>
-            {{/boardList.first}}
+        <script> let pageNum = {{boardList.number}}</script>
+        {{^boardList.first}}
+            <li class="page-item"><a class="page-link" onclick="location.href = `?page=`+(pageNum-1)">Previous</a></li>
+        {{/boardList.first}}
+        {{#boardList.first}}
+            <li class="page-item disabled"><a class="page-link"
+                                              onclick="location.href = `?page=`+(pageNum-1)">Previous</a></li>
+        {{/boardList.first}}
 
-            {{^boardList.last}}
-                <li class="page-item"><a class="page-link" onclick="location.href = `?page=`+ (pageNum+1)">Next</a></li>
-            {{/boardList.last}}
-            {{#boardList.last}}
-                    <li class="page-item disabled"><a class="page-link" onclick="location.href = `?page=`+ (pageNum+1)">Next</a></li>
-            {{/boardList.last}}
+        {{^boardList.last}}
+            <li class="page-item"><a class="page-link" onclick="location.href = `?page=`+ (pageNum+1)">Next</a></li>
+        {{/boardList.last}}
+        {{#boardList.last}}
+            <li class="page-item disabled"><a class="page-link" onclick="location.href = `?page=`+ (pageNum+1)">Next</a>
+            </li>
+        {{/boardList.last}}
 
-        </ul>
-    </div>
+    </ul>
+</div>
 
 {{>layout/footer}}
 

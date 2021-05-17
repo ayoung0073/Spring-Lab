@@ -26,13 +26,13 @@ public class BoardApiController {
     }
 
     @DeleteMapping("/api/board/{id}")
-    public ResponseDto<Integer> delete(@PathVariable Long id){
+    public ResponseDto<Integer> delete(@PathVariable Long id) {
         boardService.deleteBoard(id);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 
     @PutMapping("/api/board/{id}")
-    public ResponseDto<Integer> update(@PathVariable Long id, @RequestBody Board board){
+    public ResponseDto<Integer> update(@PathVariable Long id, @RequestBody Board board) {
         boardService.updateBoard(id, board);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
@@ -45,7 +45,7 @@ public class BoardApiController {
     }
 
     @DeleteMapping("/api/board/{boardId}/reply/{replyId}")
-    public ResponseDto<Integer> replyDelete(@PathVariable Long replyId){
+    public ResponseDto<Integer> replyDelete(@PathVariable Long replyId) {
         boardService.deleteReply(replyId);
         return new ResponseDto<>(HttpStatus.OK.value(), 1);
     }

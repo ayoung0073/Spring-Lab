@@ -2,7 +2,7 @@
 <div class="container">
     <button class="btn-secondary btn" onclick="history.back()">뒤로가기</button>
     <script>
-        if(sessionStorage.getItem("me") === "{{board.user.username}}") {
+        if (sessionStorage.getItem("me") === "{{board.user.username}}") {
             let id = {{board.id}};
             document.write(`<a href='/board/` + id + `/updateForm' class='btn btn-dark'>수정</a>`);
             document.write(` <button id="btn-delete" class="btn-danger btn">삭제</button>`);
@@ -10,25 +10,27 @@
     </script>
 
     <br><br>
-        <div>
-            <i>No.<span id="id">{{board.id}}</span>
+    <div>
+        <i>No.<span id="id">{{board.id}}</span>
             작성자. <span id="username">{{board.user.username}}</span></i>
-        </div>
-        <br>
-        <div>
-            <h4>{{board.title}}</h4>
-        </div>
-        <hr>
-        <div>
-            <div>{{{board.content}}}</div>
-        </div>
-        <hr>
+    </div>
+    <br>
+    <div>
+        <h4>{{board.title}}</h4>
+    </div>
+    <hr>
+    <div>
+        <div>{{{board.content}}}</div>
+    </div>
+    <hr>
 
     <div class="card">
         <form>
             <input id="boardId" type="hidden" value="{{board.id}}">
             <div class="card-body"><textarea id="reply-content" class="form-control" rows="1"></textarea></div>
-            <div class="card-footer"><button id="btn-reply-save" class="btn-sm btn-primary">등록</button></div>
+            <div class="card-footer">
+                <button id="btn-reply-save" class="btn-sm btn-primary">등록</button>
+            </div>
         </form>
     </div>
     <br>
@@ -36,13 +38,13 @@
         <div class="card-header">댓글 리스트</div>
         <ul id="reply-box" class="list-group">
             {{#board.reply}}
-            <li id="reply-{{id}}" class="list-group-item d-flex justify-content-between">
-                <div>{{content}}</div>
-                <div class="d-flex">
-                    <div class="font-italic">작성자 {{user.username}}&nbsp;</div> <!--&nbsp; : 한칸 띄어줌-->
-                    <button onclick="index.replyDelete({{board.id}}, {{id}})" class="badge">삭제</button>
-                </div>
-            </li>
+                <li id="reply-{{id}}" class="list-group-item d-flex justify-content-between">
+                    <div>{{content}}</div>
+                    <div class="d-flex">
+                        <div class="font-italic">작성자 {{user.username}}&nbsp;</div> <!--&nbsp; : 한칸 띄어줌-->
+                        <button onclick="index.replyDelete({{board.id}}, {{id}})" class="badge">삭제</button>
+                    </div>
+                </li>
             {{/board.reply}}
         </ul>
     </div>

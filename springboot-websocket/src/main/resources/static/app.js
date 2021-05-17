@@ -1,6 +1,6 @@
 var stompClient = null;
 
-function getFormatDate(date){
+function getFormatDate(date) {
     //Tue Dec 29 2020 22:11:10 GMT+0900 (대한민국 표준
     console.log("=======" + date);
     var year = date.getFullYear();              //yyyy
@@ -9,7 +9,7 @@ function getFormatDate(date){
     var day = date.getDate();                   //d
     day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
     var time = date.toString().substring(16, 24);
-    return  year + '-' + month + '-' + day + ' ' + time;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+    return year + '-' + month + '-' + day + ' ' + time;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
 }
 
 
@@ -28,19 +28,19 @@ function setConnected(connected) {
 function connect() {
     var socket = new SockJS('/ayolo-websocket');
     stompClient = Stomp.over(socket);
-    stompClient.connect({}, function(frame) {
+    stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
         // 입장에 대한 구독
-        stompClient.subscribe('/topic/on', function(msg) {
+        stompClient.subscribe('/topic/on', function (msg) {
             showHello(JSON.parse(msg.body));
         });
         // 입장에 대한 메시지 전달
-        stompClient.subscribe('/topic/message', function(msg) {
+        stompClient.subscribe('/topic/message', function (msg) {
             showDetail(JSON.parse(msg.body));
         });
         // 퇴장에 대한 구독
-        stompClient.subscribe('/topic/off', function(msg) {
+        stompClient.subscribe('/topic/off', function (msg) {
             showBye(JSON.parse(msg.body));
         });
         sendHello();
@@ -60,27 +60,27 @@ function disconnect() {
 
 function sendHello() {
     stompClient.send("/app/on", {}, JSON.stringify({
-        name	 : $('#name').val()
+        name: $('#name').val()
     }));
 }
 
 function sendDetail() {
     stompClient.send("/app/chat", {}, JSON.stringify({
-        name	 : $('#name').val(),
-        content : $('#btn-input').val()
+        name: $('#name').val(),
+        content: $('#btn-input').val()
     }));
 }
 
 function sendBye() {
     stompClient.send("/app/off", {}, JSON.stringify({
-        name	 : $('#name').val()
+        name: $('#name').val()
     }));
 }
 
 function showDetail(message) {
     var html = "";
     var date = new Date(message.sendDate);
-    if(message.name == $('#name').val()){
+    if (message.name == $('#name').val()) {
         html += '<li class="left clearfix">';
         html += '	<span class="chat-img pull-right">'
         html += '		<img src="image/profile.png" width="65" height="43" alt="" class="img-circle">';
@@ -93,7 +93,7 @@ function showDetail(message) {
         html += '		</small>';
         html += '	</div>';
         html += '	<p>';
-        html += 	message.content;
+        html += message.content;
         html += '	</p>';
         html += '	</div>';
         html += '</li>';
@@ -110,7 +110,7 @@ function showDetail(message) {
         html += '		</small>';
         html += '	</div>';
         html += '	<p>';
-        html += 	message.content;
+        html += message.content;
         html += '	</p>';
         html += '	</div>';
         html += '</li>';
@@ -132,7 +132,7 @@ function showHello(message) {
     html += '		</small>';
     html += '	</div>';
     html += '	<p>';
-    html += 	message.name + '님이 입장하였습니다';
+    html += message.name + '님이 입장하였습니다';
     html += '	</p>';
     html += '	</div>';
     html += '</li>';
@@ -154,7 +154,7 @@ function showBye(message) {
     html += '		</small>';
     html += '	</div>';
     html += '	<p>';
-    html +=     message.name + '님이 퇴장하였습니다';
+    html += message.name + '님이 퇴장하였습니다';
     html += '	</p>';
     html += '	</div>';
     html += '</li>';
@@ -163,19 +163,19 @@ function showBye(message) {
     $('.panel-body').scrollTop($(".chat")[0].scrollHeight);
 }
 
-$(function() {
-    $("form").on('submit', function(e) {
+$(function () {
+    $("form").on('submit', function (e) {
         e.preventDefault();
     });
-    $("#connect").click(function() {
+    $("#connect").click(function () {
         // 소켓 연결
         connect();
     });
-    $("#disconnect").click(function() {
+    $("#disconnect").click(function () {
         // 소켓 연결 끊음
         disconnect();
     });
-    $("#btn-chat").click(function() {
+    $("#btn-chat").click(function () {
         // 메시지 전달
         sendDetail();
         $('#btn-input').val('');

@@ -15,26 +15,26 @@ public class BoardService {
     private final BoardMapper boardMapper;
 
     @Transactional
-    public Long save(BoardDto boardDto){
-        if(boardMapper.save(boardDto) == 0){
+    public Long save(BoardDto boardDto) {
+        if (boardMapper.save(boardDto) == 0) {
             throw new IllegalArgumentException("데이터베이스에 저장되지 않았습니다.");
         }
         return boardDto.getBoardId();
     }
 
     @Transactional(readOnly = true)
-    public List<BoardDto> findAll(){
+    public List<BoardDto> findAll() {
         return boardMapper.findAll();
     }
 
 
     @Transactional(readOnly = true)
-    public BoardDto findById(Long id){
+    public BoardDto findById(Long id) {
         return boardMapper.findById(id);
     }
 
     @Transactional
-    public int update(Long boardId, BoardDto boardDto){
+    public int update(Long boardId, BoardDto boardDto) {
         boardDto.setBoardId(boardId);
         return boardMapper.update(boardDto);
     }

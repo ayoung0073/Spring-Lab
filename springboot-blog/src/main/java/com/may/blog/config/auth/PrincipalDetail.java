@@ -16,7 +16,7 @@ import java.util.Collection;
 public class PrincipalDetail implements UserDetails {
     private User user; // composition
 
-    public PrincipalDetail(User user){
+    public PrincipalDetail(User user) {
         this.user = user;
     }
 
@@ -67,7 +67,9 @@ public class PrincipalDetail implements UserDetails {
 //            }
 //        });
 //        같은 뜻
-        collectors.add(()->{ return "ROLE_" + user.getRole();});
+        collectors.add(() -> {
+            return "ROLE_" + user.getRole();
+        });
         return collectors;
     }
 

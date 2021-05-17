@@ -17,7 +17,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/user")
-    public ResponseEntity<?> saveUser(@RequestBody UserDto userDto){
+    public ResponseEntity<?> saveUser(@RequestBody UserDto userDto) {
         User user = User.builder()
                 .age(userDto.getAge())
                 .name(userDto.getName())

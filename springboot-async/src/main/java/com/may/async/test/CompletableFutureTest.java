@@ -14,9 +14,9 @@ public class CompletableFutureTest {
                 = new CompletableFuture<>(); // Future 객체 생성, <Integer> 저장하려는 데이터 타입 명시
 
         /*
-        * Executors.newCachedThreadPool() : Thread Pool 생성
-        * submit() : Callable 전달하면 대기 중인 Thread로부터 실행된다.
-        * */
+         * Executors.newCachedThreadPool() : Thread Pool 생성
+         * submit() : Callable 전달하면 대기 중인 Thread로부터 실행된다.
+         * */
         ExecutorService executorService = Executors.newCachedThreadPool();
         executorService.submit(() -> {
             System.out.println(LocalTime.now() + " Doing something");

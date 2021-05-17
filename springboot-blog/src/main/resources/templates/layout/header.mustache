@@ -19,15 +19,15 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    {{#me}}
+        {{#me}}
+            <script>
+                let me = "{{me}}";
+                sessionStorage.setItem("me", me);
+            </script>
+        {{/me}}
         <script>
-            let me = "{{me}}" ;
-            sessionStorage.setItem("me", me);
-        </script>
-    {{/me}}
-    <script>
-        if(sessionStorage.getItem("me") == null){
-            document.write(`
+            if (sessionStorage.getItem("me") == null) {
+                document.write(`
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="/auth/loginForm">login</a></li>
                 <li class="nav-item"><a class="nav-link" href="/auth/joinForm">join</a></li>
@@ -35,9 +35,8 @@
             </div>
             </nav>
             `);
-        }
-        else{
-            document.write(`
+            } else {
+                document.write(`
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link " href="/board/saveForm">글쓰기</a></li>
                 <li class="nav-item"><a class="nav-link" href="/user/updateForm">회원정보</a></li>
@@ -46,12 +45,12 @@
             </div>
             </nav>
         `);
-            document.write(`
+                document.write(`
             <span class="form-control">
                     ${sessionStorage.getItem("me")}
                     님 환영합니다🖐
             </span>
             `);
-        }
+            }
         </script>
         <br>

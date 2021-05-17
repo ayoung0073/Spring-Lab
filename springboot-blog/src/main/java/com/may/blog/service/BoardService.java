@@ -21,31 +21,34 @@ public class BoardService {
     private final ReplyRepository replyRepository;
 
     @Transactional
-    public void register(Board board, User user){
+    public void register(Board board, User user) {
         board.setCount(0);
         board.setUser(user);
         boardRepository.save(board);
     }
 
     @Transactional(readOnly = true)
-    public Page<Board> getBoardList(Pageable pageable){
+    public Page<Board> getBoardList(Pageable pageable) {
         return boardRepository.findAll(pageable);
     }
 
-    public Board getBoardDetail(Long id){
+    public Board getBoardDetail(Long id) {
         return boardRepository.findById(id).orElseThrow(()
-        ->{return new IllegalArgumentException("해당 게시글이 없습니다");});
+                -> {
+            return new IllegalArgumentException("해당 게시글이 없습니다");
+        });
     }
 
     @Transactional
-    public void deleteBoard(Long id){
+    public void deleteBoard(Long id) {
         boardRepository.deleteById(id);
     }
 
     @Transactional
-    public void updateBoard(Long id, Board requestBoard){
-        Board board= boardRepository.findById(id).orElseThrow(
-                () ->{return new IllegalArgumentException("글을 찾을 수 없습니다");
+    public void updateBoard(Long id, Board requestBoard) {
+        Board board = boardRepository.findById(id).orElseThrow(
+                () -> {
+                    return new IllegalArgumentException("글을 찾을 수 없습니다");
                 }); // 영속화 완료
         System.out.println(requestBoard.getContent());
         board.update(requestBoard.getTitle(), requestBoard.getContent());
@@ -54,9 +57,10 @@ public class BoardService {
     }
 
     @Transactional
-    public void registerReply(Long boardId, Reply requestReply, User user){
+    public void registerReply(Long boardId, Reply requestReply, User user) {
         Board board = boardRepository.findById(boardId).orElseThrow(
-                ()-> { return new IllegalArgumentException("댓글 쓰기 실패");
+                () -> {
+                    return new IllegalArgumentException("댓글 쓰기 실패");
                 });
         requestReply.setUser(user);
         requestReply.setBoard(board);
@@ -65,7 +69,7 @@ public class BoardService {
     }
 
     @Transactional
-    public void deleteReply(Long replyId){
+    public void deleteReply(Long replyId) {
         replyRepository.deleteById(replyId);
     }
 
