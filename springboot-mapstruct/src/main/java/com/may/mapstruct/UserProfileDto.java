@@ -1,12 +1,11 @@
 package com.may.mapstruct;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@AllArgsConstructor
 @Getter
-@Builder
-public class SignUpDto {
+public class UserProfileDto {
     private String email;
-    private String password;
     private String nickname;
 }

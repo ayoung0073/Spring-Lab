@@ -24,4 +24,21 @@ public class UserMapperTest {
         assertThat(user.getNickname(), is(signUpDto.getNickname()));
         // user.getId() : null
     }
+
+    @Test
+    void UserEntity_TO_ProfileDto_테스트() {
+        // given
+        final UserEntity user = UserEntity.builder()
+                .id(1L)
+                .email("email@email.com")
+                .nickname("애용")
+                .password("password")
+                .build();
+        // when
+        final UserProfileDto profileDto = UserMapper.INSTANCE.toProfileDto(user);
+        //then
+        assertNotNull(profileDto);
+        assertThat(profileDto.getEmail(), is(user.getEmail()));
+        assertThat(profileDto.getNickname(), is(user.getNickname()));
+    }
 }

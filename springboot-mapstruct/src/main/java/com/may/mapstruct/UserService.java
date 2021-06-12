@@ -14,4 +14,8 @@ public class UserService {
         return user.getId();
     }
 
+    public UserEntity getProfile(Long userId) {
+        return userRepository.findById(userId).orElseThrow();
+    }
+
 }

@@ -11,4 +11,7 @@ public interface UserMapper {
 
     @Mapping(target = "id", ignore = true)
     UserEntity signUpDtoToEntity(SignUpDto signUpDto);
+
+    UserProfileDto toProfileDto(UserEntity userEntity);
+    // UserProfileDto에 @AllArgsConstructor 필요 (아니면 null)
 }
