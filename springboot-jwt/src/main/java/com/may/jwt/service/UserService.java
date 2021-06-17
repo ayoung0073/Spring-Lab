@@ -3,7 +3,7 @@ package com.may.jwt.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.may.jwt.TokenDto;
 import com.may.jwt.domain.User;
-import com.may.jwt.repository.UserMemoryRepository;
+import com.may.jwt.repository.UserRepositoryImpl;
 import com.may.jwt.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository = new UserMemoryRepository();
+    private final UserRepository userRepository = new UserRepositoryImpl();
 
     private final JwtService jwtService;
 
@@ -33,4 +33,5 @@ public class UserService {
     public Long authAccessToken(String accessToken) throws JsonProcessingException {
         return jwtService.getPayload(accessToken);
     }
+
 }

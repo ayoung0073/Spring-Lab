@@ -3,7 +3,7 @@ package com.may.jwt.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.may.jwt.TokenDto;
 import com.may.jwt.domain.User;
-import com.may.jwt.repository.UserMemoryRepository;
+import com.may.jwt.repository.UserRepositoryImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ class UserServiceTest {
     private UserService userService;
 
     @Autowired
-    private UserMemoryRepository userRepository;
+    private UserRepositoryImpl userRepository;
 
     @AfterEach
     public void afterEach() { // 테스트간 종속 제거

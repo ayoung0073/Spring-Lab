@@ -25,7 +25,7 @@ public class JwtIssueService {
     public String issueToken(Long userId, Long validTime) throws JsonProcessingException {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         Date expireTime = new Date();
-        expireTime.setTime(expireTime.getTime() + validTime); // 30m
+        expireTime.setTime(expireTime.getTime() + validTime);
         byte[] secretKeyBytes = DatatypeConverter.parseBase64Binary(SECRET_KEY);
 
         Map<String, Object> headerMap = new HashMap<>();
