@@ -1,15 +1,18 @@
 package com.may.querydsl.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
+@Builder
 @Entity
-public class Member {
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +20,8 @@ public class Member {
 
     private String name;
 
-    @OneToMany(mappedBy = "writer")
-    private List<Post> postList;
-
-    public Member(String name) {
-        this.name = name;
-    }
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member writer;
 
 }
