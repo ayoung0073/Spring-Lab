@@ -23,11 +23,6 @@ class MemberRepositorySupportTest {
     @Autowired
     private MemberRepositorySupport memberRepositorySupport;
 
-    @BeforeEach
-    void init() {
-        memberRepository.deleteAll();
-    }
-
     @Test
     void findByName_테스트() {
         // given
