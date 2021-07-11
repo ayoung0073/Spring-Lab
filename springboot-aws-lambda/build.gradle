@@ -41,6 +41,9 @@ dependencies {
     implementation group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.1'
     // AWS Lambda 이벤트를 다루기 위한 의존성
     implementation group: 'com.amazonaws', name: 'aws-lambda-java-events', version: '3.9.0'
+
+    // 로컬테스트를 위한 의존성 aws 배포 시에는 필요 X
+    implementation 'org.springframework.cloud:spring-cloud-starter-function-web'
 }
 
 test {
