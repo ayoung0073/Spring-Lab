@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.function.Function;
 
 @Component // 하나의 함수
-public class StringValidator implements Function<StringRequest, StringResponse> {
+public class StringCheck implements Function<StringRequest, StringResponse> {
     @Override
     public StringResponse apply(StringRequest stringRequest) {
         String input = stringRequest.getInput();
