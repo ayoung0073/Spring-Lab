@@ -16,6 +16,17 @@ include::{snippets}/boards/get/curl-request.adoc[]
 include::{snippets}/boards/get/http-request.adoc[]
 include::{snippets}/boards/get/http-response.adoc[]
 include::{snippets}/boards/get/httpie-request.adoc[]
-// include::{snippets}/boards/get/request-body.adoc[]
 include::{snippets}/boards/get/response-body.adoc[]
 include::{snippets}/boards/get/response-fields.adoc[]
+
+[[board-저장]]
+=== board 저장
+//include::{snippets}/boards/save/curl-request.adoc[]
+include::{snippets}/boards/save/http-request.adoc[]
+include::{snippets}/boards/save/http-response.adoc[]
+//include::{snippets}/boards/save/httpie-request.adoc[]
+- Request Body
+include::{snippets}/boards/save/request-body.adoc[]
+- Response Body
+include::{snippets}/boards/save/response-body.adoc[]
+include::{snippets}/boards/save/response-fields.adoc[]
