@@ -1,0 +1,21 @@
+= REST Docs
+Andy Wilkinson;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+[[board]]
+== Board API
+
+[[board-조회]]
+=== board 조회
+include::{snippets}/boards/get/curl-request.adoc[]
+include::{snippets}/boards/get/http-request.adoc[]
+include::{snippets}/boards/get/http-response.adoc[]
+include::{snippets}/boards/get/httpie-request.adoc[]
+// include::{snippets}/boards/get/request-body.adoc[]
+include::{snippets}/boards/get/response-body.adoc[]
+include::{snippets}/boards/get/response-fields.adoc[]
