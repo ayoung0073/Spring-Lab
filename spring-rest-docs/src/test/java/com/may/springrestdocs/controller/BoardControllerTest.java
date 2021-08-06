@@ -2,6 +2,7 @@ package com.may.springrestdocs.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.may.springrestdocs.dto.BoardResponse;
+import com.may.springrestdocs.dto.ResponseDto;
 import com.may.springrestdocs.service.BoardService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -62,18 +65,20 @@ public class BoardControllerTest {
         // then
         result
                 .andExpect(status().isOk())
-                .andExpect(content().string(objectMapper.writeValueAsString(response)))
+                .andExpect(content().string(objectMapper.writeValueAsString(ResponseDto.of(HttpStatus.OK, "success to get board", response))))
                 .andDo(print())
                 .andDo(document("boards/get",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         pathParameters(
-                                parameterWithName("id").description("requested board id.")
+                                parameterWithName("id").description("requested board id")
                         ),
                         responseFields(
-                                fieldWithPath("id").type(JsonFieldType.NUMBER).description("board id."),
-                                fieldWithPath("title").type(JsonFieldType.STRING).description("board title."),
-                                fieldWithPath("content").type(JsonFieldType.STRING).description("board content")
+                                fieldWithPath("status").type(JsonFieldType.NUMBER).description(200),
+                                fieldWithPath("message").type(JsonFieldType.STRING).description("success message"),
+                                fieldWithPath("data.id").type(JsonFieldType.NUMBER).description("board id"),
+                                fieldWithPath("data.title").type(JsonFieldType.STRING).description("board title"),
+                                fieldWithPath("data.content").type(JsonFieldType.STRING).description("board content")
                         )
                 ));
     }

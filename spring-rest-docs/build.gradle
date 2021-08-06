@@ -29,7 +29,7 @@ task copyDocument(type: Copy) {
 
     from file("build/asciidoc/html5/")
     into file("src/main/resources/static/docs")
-}sud
+}
 
 build {
     dependsOn copyDocument
