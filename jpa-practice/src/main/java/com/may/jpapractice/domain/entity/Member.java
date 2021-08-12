@@ -10,14 +10,14 @@ import javax.persistence.ManyToOne;
 
 @Getter
 @Builder
-@Entity
+@Entity(name = "member")
 public class Member {
 
     @Id
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "member")
+    @JoinColumn(name = "team")
     private Team team;          // 참조로 연관관계를 맺는다.
 
     private String username;
