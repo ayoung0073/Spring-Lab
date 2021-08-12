@@ -1,5 +1,6 @@
 package com.may.jpapractice.domain.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.Entity;
@@ -8,8 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Getter
+@Builder
 @Entity
-class Member {
+public class Member {
 
     @Id
     private Long id;
