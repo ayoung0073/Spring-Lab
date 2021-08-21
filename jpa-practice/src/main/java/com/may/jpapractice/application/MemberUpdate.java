@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class MemberFind {
+public class MemberUpdate {
 
     public static void main(String[] args) {
 
@@ -25,9 +25,20 @@ public class MemberFind {
         em.persist(memberA);
 
         Member findMember = em.find(Member.class, 1L);
+        findMember.setEmail("test@test.com");
 
+        em.persist(findMember);
         System.out.println(findMember.getUsername());
+        transaction.commit();
+
     }
 
-
 }
+
+/*
+@DynamicUpdate 적용 X
+update member set email=?, team=?, username=? where id=?
+
+@DynamicUpdate 적용
+update member set email=? where id=?
+ */
