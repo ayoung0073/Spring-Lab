@@ -1,16 +1,27 @@
 package com.may.jpapractice.domain.entity;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
+@Builder
 @Entity
-class Team {
+@Table(name = "team")
+public class Team extends BaseEntity {
 
-    @Id
-    Long id;
+    @Id @GeneratedValue
+    @Column(name = "team_id")
+    private Long id;
 
-    String name;
+    @Setter
+    private String name;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Member> memberList = new ArrayList<>();
 }
